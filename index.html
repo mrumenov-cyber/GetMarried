@@ -6,10 +6,22 @@
   <title>How to Get Married in 1 Year or less in 2026?</title>
   <style>
     :root{
-      --gold:#c9a227; --gold-deep:#b8921f; --gold-soft:#f9f1cf; --gold-edge:#eadca6;
-      --purple:#7c5cff; --purple-dark:#6848e8;
-      --pink:#ff4da6; --pink-deep:#e03f8f;
-      --ink:#1a1a1a; --muted:#555; --bg:#fff; --box:#f8f8fc; --edge:#e5e6ee;
+      --gold:#c9a227;
+      --gold-deep:#b8921f;
+      --gold-soft:#f9f1cf;
+      --gold-edge:#eadca6;
+
+      --purple:#7c5cff;
+      --purple-dark:#6848e8;
+
+      --pink:#ff4da6;
+      --pink-deep:#e03f8f;
+
+      --ink:#1a1a1a;
+      --muted:#555;
+      --bg:#fff;
+      --box:#f8f8fc;
+      --edge:#e5e6ee;
     }
     *{box-sizing:border-box}
     body{
@@ -18,17 +30,12 @@
       display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:100vh
     }
     header{text-align:center;padding:28px 20px 14px;max-width:1000px;width:100%}
-    .countdown-box{
-      background:#111;color:#fff;font-size:22px;font-weight:700;
-      padding:14px 24px;border-radius:12px;display:inline-block;margin-bottom:16px
+    .hero-title{
+      margin:6px 0 10px;font-size:34px;line-height:1.15;font-weight:800;letter-spacing:.2px
     }
-    .hero-title{margin:6px 0 10px;font-size:34px;line-height:1.15;font-weight:800;letter-spacing:.2px}
     .hero-sub{margin:6px 0 8px;color:var(--muted);font-size:16px;max-width:740px;margin-left:auto;margin-right:auto}
-    .deadline{
-      display:inline-block;margin-top:6px;background:#fff7e1;border:1px solid #ffe2a3;
-      color:#5a4700;padding:10px 14px;border-radius:10px;font-weight:700
-    }
 
+    /* Video */
     .video-wrapper{
       width:100%;max-width:1000px;position:relative;border-radius:16px;overflow:hidden;
       margin:18px 0 18px;border:1px solid var(--edge);box-shadow:0 6px 22px rgba(0,0,0,.06)
@@ -36,24 +43,10 @@
     .video-wrapper::before{content:"";display:block;padding-top:65.81%;}
     .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 
-    /* Expired overlay (only covers the video area) */
-    .expired{
-      position:absolute;inset:0;display:none;align-items:center;justify-content:center;
-      background:rgba(0,0,0,.8);backdrop-filter:blur(6px);color:#fff;text-align:center;padding:20px;z-index:2
+    /* Reveal section */
+    .reveal-wrap{
+      max-width:1000px;width:100%;text-align:center;margin-bottom:20px;
     }
-    .overlay-card{
-      background:#1b1b1b;border:1px solid #333;border-radius:14px;padding:18px 16px;max-width:520px
-    }
-    .overlay-card h2{margin:0 0 8px 0;font-size:22px}
-    .overlay-card p{margin:6px 0 12px 0;opacity:.9}
-    .overlay-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-    .overlay-btn{
-      background:#fff;color:#111;border:none;border-radius:999px;
-      padding:10px 16px;font-weight:800;cursor:pointer
-    }
-    .overlay-btn.secondary{background:#2a2a2a;color:#fff;border:1px solid #444}
-
-    .reveal-wrap{text-align:center;margin-bottom:20px;}
     .reveal-btn{
       background:var(--purple);color:#fff;border:none;padding:14px 28px;border-radius:999px;
       font-size:16px;font-weight:700;cursor:pointer;
@@ -63,15 +56,22 @@
     .reveal-btn:hover{background:var(--purple-dark)}
     .reveal-btn:active{transform:translateY(1px)}
 
+    /* offers */
+    .hidden-offers{display:none;}
+
     .tiers{
-      width:100%;max-width:1000px;margin:0 0 30px;display:grid;gap:22px;grid-template-columns:1fr;align-items:stretch;
+      width:100%;max-width:1000px;margin:0 0 30px;
+      display:grid;gap:22px;grid-template-columns:1fr;align-items:stretch;
     }
     .card{
       border-radius:16px;padding:24px 24px 22px;border:1px solid var(--edge);background:var(--box);
       display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 24px rgba(0,0,0,.05);height:100%;
     }
     .card h2{margin:0;font-size:22px;display:flex;align-items:center;gap:10px;line-height:1.2}
-    .badge{font-size:12px;font-weight:800;letter-spacing:.4px;border-radius:999px;padding:6px 10px;line-height:1;display:inline-block;white-space:nowrap}
+    .badge{
+      font-size:12px;font-weight:800;letter-spacing:.4px;border-radius:999px;
+      padding:6px 10px;line-height:1;display:inline-block;white-space:nowrap
+    }
     .badge.gold{background:var(--gold-soft);color:#5a4700;border:1px solid var(--gold-edge)}
     .subtitle{color:var(--muted);margin:-2px 0 2px}
     .features{margin:4px 0 0;color:var(--ink);line-height:1.55;flex:1 1 auto}
@@ -80,7 +80,8 @@
     .bottom-cta{margin-top:auto}
     .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
     .btn{
-      align-self:flex-start;background:var(--purple);color:#fff;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;transition:transform .1s, background .2s
+      align-self:flex-start;background:var(--purple);color:#fff;padding:12px 18px;border-radius:10px;
+      text-decoration:none;font-weight:700;transition:transform .1s, background .2s
     }
     .btn:hover{background:var(--purple-dark)}
     .btn:active{transform:translateY(1px)}
@@ -91,52 +92,80 @@
 
     .card.gold{
       background:linear-gradient(180deg,#fffaf0 0%, #fff5da 100%);
-      border:1px solid var(--gold-edge);position:relative;
+      border:1px solid var(--gold-edge);
+      position:relative;
       box-shadow:0 14px 30px rgba(201,162,39,.18), 0 6px 14px rgba(0,0,0,.06);
     }
-    .card.gold .title-wrap{display:flex;align-items:center;gap:10px;justify-content:space-between}
+    .card.gold .title-wrap{
+      display:flex;align-items:center;gap:10px;justify-content:space-between
+    }
     .card.gold .crown{
       width:28px;height:28px;border-radius:6px;border:1px solid #ddd;
       background:radial-gradient(circle at 30% 30%, #fff 0%, #ffeaa5 40%, #ffd86b 100%);
       border-color:#f3d37d;box-shadow:inset 0 0 8px rgba(255,215,100,.6);
     }
-    .why-box{background:#fff;border:1px dashed #d0d7db;border-radius:12px;padding:12px 14px;line-height:1.5}
+    .why-box{
+      background:#fff;border:1px dashed #d0d7db;border-radius:12px;padding:12px 14px;line-height:1.5
+    }
     .gold-why{border-color:#f1d88a;}
+
+    /* testimonials */
+    .testimonials{
+      width:100%;max-width:1000px;margin:14px 0 60px;padding:0 0 6px 0;
+    }
+    .t-wrap{
+      background:linear-gradient(135deg,#ffe7f2 0%, #fff0f7 45%, #ffe0f0 100%);
+      border:1px solid #ffd1e6;border-radius:20px;
+      box-shadow:0 12px 30px rgba(255,77,166,.18), 0 6px 14px rgba(0,0,0,.05);
+      padding:22px 20px;
+    }
+    .t-head{text-align:center;margin:0 0 14px 0;}
+    .t-head h2{margin:0;font-size:28px;line-height:1.2;color:#b82b6f;font-weight:900;letter-spacing:.2px;}
+    .t-head p{margin:8px 0 0;color:#7a2152;font-size:16px;}
+    .t-cta{text-align:center;margin:14px 0 16px;}
+    .t-cta a{
+      display:inline-block;background:var(--pink);color:#fff;font-weight:800;
+      text-decoration:none;padding:12px 18px;border-radius:999px;
+      box-shadow:0 8px 18px rgba(255,77,166,.25);
+    }
+    .t-cta a:hover{background:var(--pink-deep)}
+    .t-frame{position:relative;border-radius:14px;overflow:hidden;border:1px solid #ffcfe5;background:#fff;}
+    .t-frame::before{content:"";display:block;padding-top:70vh;max-height:820px;min-height:520px;}
+    .t-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+    /* consultation */
+    #consultation{max-width:1000px;width:100%;margin:0 0 50px}
+    .consult{
+      background:#eaf4ff;border:1px solid #c6e2ff;border-radius:14px;padding:22px 24px;text-align:center;line-height:1.45
+    }
+    .consult a{
+      background:#0077ff;color:#fff;padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:700;display:inline-block
+    }
 
     footer{text-align:center;padding:20px;color:#777;font-size:14px}
   </style>
 </head>
 <body>
   <header>
-    <div class="countdown-box" id="countdown">Loading...</div>
     <h1 class="hero-title">How to Get Married in 1 Year or less in 2026?</h1>
     <p class="hero-sub">Even if you have been unlucky in love, even if you never dated, even if you think you are too old, even if you just broke up..</p>
-    <div class="deadline" id="deadline-text">Your access is open for 2 days from your first visit 💛</div>
   </header>
 
+  <!-- Video -->
   <section class="video-wrapper">
-    <iframe id="vimeo-iframe" src="https://player.vimeo.com/video/1132171278?h=dfb7bc5b68&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0"
+    <iframe id="vimeo-iframe" src="https://player.vimeo.com/video/1132171278?h=dfb7bc5b68&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
       frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-      referrerpolicy="strict-origin-when-cross-origin" title="Get Married in 1 Year"></iframe>
-
-    <!-- Expired overlay with 2-hour rewatch option -->
-    <div id="expired-overlay" class="expired" aria-hidden="true">
-      <div class="overlay-card">
-        <h2 id="overlay-title">Access has ended</h2>
-        <p id="overlay-text">The training and the special offers are now closed.</p>
-        <div class="overlay-actions">
-          <button id="rewatch-btn" class="overlay-btn">Get a 2-hour rewatch</button>
-          <button id="close-overlay" class="overlay-btn secondary">Close</button>
-        </div>
-      </div>
-    </div>
+      referrerpolicy="strict-origin-when-cross-origin" title="Get Married in 1 Year">
+    </iframe>
   </section>
 
+  <!-- Show-me-more (instant reveal) -->
   <section class="reveal-wrap">
     <button id="reveal-btn" class="reveal-btn">Show me more 💗</button>
   </section>
 
-  <div id="offers-wrapper" style="display:none;">
+  <!-- OFFERS (Gold/VIP only) -->
+  <div id="offers-wrapper" class="hidden-offers">
     <section class="tiers" id="cta-live">
       <div class="card gold">
         <div class="title-wrap">
@@ -144,160 +173,90 @@
           <div class="crown" aria-hidden="true"></div>
         </div>
         <div class="subtitle">Premium access, high-touch mentoring, and powerful momentum — for women ready to be fully supported and accelerated.</div>
+
         <div class="features">
           <div class="why-box gold-why">
             What you receive inside VIP:
-            <ul>
-              <li><strong>✨ Three months inside an intimate group VIP container</strong> — sacred space for transformation, emotional safety, and results.</li>
-              <li><strong>💬 24/7 Telegram support</strong> from me and my married team.</li>
-              <li><strong>🎥 8 LIVE Zoom calls</strong> (every second week) for coaching and calibration.</li>
-              <li><strong>❤️ We vet men for you</strong> — real-time protection and clarity.</li>
-              <li><strong>🗓 We begin:</strong> <strong>05.01.2026</strong></li>
+            <ul style="margin:8px 0 0 18px">
+              <li>✨ Three months inside an intimate group VIP container — sacred space for transformation, emotional safety, and results.</li>
+              <li>💬 24/7 Telegram support from me and my married team.</li>
+              <li>🎥 8 LIVE Zoom calls (every second week) for coaching and calibration.</li>
+              <li>❤️ We vet men for you — real-time protection and clarity.</li>
+              <li>🗓 We begin: <strong>05.01.2026</strong></li>
             </ul>
           </div>
-          <ul>
+
+          <ul style="margin:12px 0 0 18px">
             <li>Clarity on your values, vision, and non-negotiables</li>
             <li>Real-time red-flag protection and emotional calibration</li>
             <li>Scripts, communication frameworks & emotional tools</li>
             <li>Weekly action plans to move forward with ease</li>
           </ul>
         </div>
+
         <div class="bottom-cta">
           <div class="cta-row">
-            <a class="btn gold" href="https://stan.store/feminine_dating/p/your-path-to-your-divine-masculine-provider" target="_blank">€2,222 Pay in Full →</a>
-            <a class="btn purple" href="https://stan.store/feminine_dating/p/get-married-in-1-year-in-4-monthly-instalments" target="_blank">4 × €644 →</a>
+            <a class="btn gold" href="https://stan.store/feminine_dating/p/your-path-to-your-divine-masculine-provider" target="_blank" rel="noopener">
+              €2,222 Pay in Full →
+            </a>
+            <a class="btn purple" href="https://stan.store/feminine_dating/p/get-married-in-1-year-in-4-monthly-instalments" target="_blank" rel="noopener">
+              4 × €644 →
+            </a>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials" aria-labelledby="t-title">
+      <div class="t-wrap">
+        <div class="t-head">
+          <h2 id="t-title">✨ Testimonials & Stories of Success</h2>
+          <p>Real women. Real results. Let their journeys inspire your next step.</p>
+        </div>
+
+        <div class="t-cta">
+          <a href="https://feminine-dating-results.start.page/" target="_blank" rel="noopener">Open Full Stories in New Tab →</a>
+        </div>
+
+        <div class="t-frame">
+          <iframe
+            src="https://feminine-dating-results.start.page/"
+            title="Testimonials & Stories of Success"
+            loading="lazy"
+            allowtransparency="true"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <div class="t-cta" style="margin-top:14px">
+          <a href="https://feminine-dating-results.start.page/" target="_blank" rel="noopener">View All Success Stories →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Consultation -->
+    <section id="consultation">
+      <div class="consult">
+        <div style="font-weight:700;font-size:20px;margin-bottom:6px">Still not sure?</div>
+        <div style="margin-bottom:12px">Lets hop on a short call 💬</div>
+        <a href="https://calendly.com/feminine-enchantress/30min/" target="_blank" rel="noopener">Book your 30-min Call →</a>
+      </div>
+    </section>
   </div>
 
-  <footer>This offer closes for you when your 2-day timer hits zero 💜</footer>
+  <footer>
+    Ready when you are 💜
+  </footer>
 
-  <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
-  // ---------- SAFE CONSTANTS ----------
-  const TWO_DAYS_MS   = 2 * 24 * 60 * 60 * 1000;
-  const TWO_HOURS_MS  = 2 * 60 * 60 * 1000;
-  const BASE_KEY      = 'gmiy';
-  const FIRST_SEEN_K  = BASE_KEY + '_firstSeen';
-  const IP_K          = BASE_KEY + '_ip';
-  const REWATCH_UNTIL = BASE_KEY + '_rewatch_until';
-  const REWATCH_USED  = BASE_KEY + '_rewatch_used';
-
-  // ---------- ELEMENTS ----------
-  const $count        = document.getElementById('countdown');
-  const $overlay      = document.getElementById('expired-overlay');
-  const $overlayTitle = document.getElementById('overlay-title');
-  const $overlayText  = document.getElementById('overlay-text');
-  const $rewatchBtn   = document.getElementById('rewatch-btn');
-  const $closeOverlay = document.getElementById('close-overlay');
-  const $iframe       = document.getElementById('vimeo-iframe');
-  const $offers       = document.getElementById('offers-wrapper');
-  const $revealBtn    = document.getElementById('reveal-btn');
-
-  // Vimeo player (never crash if it fails)
-  let player = null;
-  try { player = new Vimeo.Player($iframe); } catch(e){ player = null; }
-
-  // ---------- UTIL ----------
-  const pad = n => String(n).padStart(2,'0');
-  function fmt(ms){
-    if(ms <= 0) return '00:00:00';
-    const s = Math.floor(ms/1000);
-    const d = Math.floor(s/86400);
-    const h = Math.floor((s%86400)/3600);
-    const m = Math.floor((s%3600)/60);
-    const sec = s%60;
-    return (d>0? d+'d ' : '') + pad(h)+':'+pad(m)+':'+pad(sec);
-  }
-  function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
-  function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
-  function nowMs(){ return Date.now(); }
-
-  // ---------- IP (best-effort, never block UI) ----------
-  async function getIPSafe(){
-    // cache if we already have it
-    const cached = lsGet(IP_K);
-    if(cached) return cached;
-    try{
-      const c = new AbortController();
-      const t = setTimeout(()=>c.abort(), 1500); // 1.5s timeout so UI never blocks
-      const r = await fetch('https://api.ipify.org?format=json', { signal:c.signal });
-      clearTimeout(t);
-      const j = await r.json();
-      const ip = (j && j.ip) ? j.ip : 'local';
-      lsSet(IP_K, ip);
-      return ip;
-    }catch(e){
-      lsSet(IP_K, 'local');
-      return 'local';
-    }
-  }
-
-  // ---------- STATE ----------
-  let expiryTs       = null;  // main 2-day limit
-  let rewatchUntilTs = null;  // optional 2-hour rewatch
-
-  function ensureFirstSeen(){
-    let fs = lsGet(FIRST_SEEN_K);
-    if(!fs){
-      const iso = new Date().toISOString();
-      lsSet(FIRST_SEEN_K, iso);
-      fs = iso;
-    }
-    return new Date(fs).getTime();
-  }
-  function loadRewatch(){ const v = lsGet(REWATCH_UNTIL); return v ? new Date(v).getTime() : null; }
-  function hasUsedRewatch(){ return lsGet(REWATCH_USED) === '1'; }
-  function grantRewatch(){
-    const untilIso = new Date(nowMs() + TWO_HOURS_MS).toISOString();
-    lsSet(REWATCH_UNTIL, untilIso);
-    lsSet(REWATCH_USED, '1');
-    rewatchUntilTs = new Date(untilIso).getTime();
-  }
-
-  // ---------- OVERLAY CONTROL ----------
-  function showOverlay(message, canRewatch){
-    $overlayTitle.textContent = 'Access has ended';
-    $overlayText.textContent  = message || 'The training and the special offers are now closed.';
-    $rewatchBtn.style.display = canRewatch ? 'inline-block' : 'none';
-    $overlay.style.display    = 'flex';
-    $overlay.setAttribute('aria-hidden','false');
-  }
-  function hideOverlay(){
-    $overlay.style.display = 'none';
-    $overlay.setAttribute('aria-hidden','true');
-  }
-
-  // ---------- TICK ----------
-  function tick(){
-    try{
-      const t = nowMs();
-      const mainExpired   = t >= expiryTs;
-      const rewatchActive = rewatchUntilTs && t < rewatchUntilTs;
-      const fullyExpired  = mainExpired && !rewatchActive;
-
-      if(fullyExpired){
-        $count.textContent = 'Expired';
-        hideOffers();
-        if(player){ player.pause().catch(()=>{}).finally(()=>{ if(player.unload) player.unload(); }); }
-        showOverlay(
-          hasUsedRewatch()
-            ? 'The training is fully closed. The 2-hour rewatch was already used on this device.'
-            : 'The training is closed. You can unlock a one-time 2-hour rewatch.',
-          !hasUsedRewatch()
-        );
-        return;
-      }
-
-      if(!mainExpired){
-        hideOverlay();
-        $count.textContent = fmt(expiryTs - t);
-        return;
-      }
-
-      // main expired, but rewatch active
-      hideOverlay();
-      $count.textContent = 'Rewatch: ' + fmt(rewatchUntilTs - t);
-      // keep o
+    // Instant reveal: no timers, no conditions
+    const revealBtn = document.getElementById('reveal-btn');
+    const offersWrapper = document.getElementById('offers-wrapper');
+    revealBtn.addEventListener('click', () => {
+      offersWrapper.style.display = 'block';
+      window.scrollTo({ top: offersWrapper.offsetTop - 16, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
