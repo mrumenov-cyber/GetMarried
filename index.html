@@ -47,14 +47,24 @@
       width:100%;max-width:1000px;position:relative;border-radius:16px;overflow:hidden;
       margin:18px 0 18px;border:1px solid var(--edge);box-shadow:0 6px 22px rgba(0,0,0,.06)
     }
-    .video-wrapper::before{
-      content:"";display:block;padding-top:65.81%;
-    }
+    .video-wrapper::before{content:"";display:block;padding-top:65.81%;}
     .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+
     .expired{
       position:absolute;inset:0;display:none;align-items:center;justify-content:center;
       background:rgba(0,0,0,.8);backdrop-filter:blur(6px);color:#fff;text-align:center;padding:20px
     }
+    .overlay-card{
+      background:#1b1b1b;border:1px solid #333;border-radius:14px;padding:18px 16px;max-width:520px
+    }
+    .overlay-card h2{margin:0 0 8px 0;font-size:22px}
+    .overlay-card p{margin:6px 0 12px 0;opacity:.9}
+    .overlay-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .overlay-btn{
+      background:#fff;color:#111;border:none;border-radius:999px;
+      padding:10px 16px;font-weight:800;cursor:pointer
+    }
+    .overlay-btn.secondary{background:#2a2a2a;color:#fff;border:1px solid #444}
 
     .reveal-wrap{text-align:center;margin-bottom:20px;}
     .reveal-btn{
@@ -68,14 +78,11 @@
 
     .tiers{
       width:100%;max-width:1000px;margin:0 0 30px;
-      display:grid;gap:22px;
-      grid-template-columns:1fr;
-      align-items:stretch;
+      display:grid;gap:22px;grid-template-columns:1fr;align-items:stretch;
     }
     .card{
       border-radius:16px;padding:24px 24px 22px;border:1px solid var(--edge);background:var(--box);
-      display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 24px rgba(0,0,0,.05);
-      height:100%;
+      display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 24px rgba(0,0,0,.05);height:100%;
     }
     .card h2{margin:0;font-size:22px;display:flex;align-items:center;gap:10px;line-height:1.2}
     .badge{
@@ -134,10 +141,16 @@
     <iframe id="vimeo-iframe" src="https://player.vimeo.com/video/1132171278?h=dfb7bc5b68&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0"
       frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
       referrerpolicy="strict-origin-when-cross-origin" title="Get Married in 1 Year"></iframe>
+
+    <!-- Expired overlay with 2-hour rewatch option -->
     <div id="expired-overlay" class="expired">
-      <div>
-        <h2>Access has ended</h2>
-        <p>The training and the special offers are now closed. Join the waitlist to be notified next time.</p>
+      <div class="overlay-card">
+        <h2 id="overlay-title">Access has ended</h2>
+        <p id="overlay-text">The training and the special offers are now closed. Join the waitlist to be notified next time.</p>
+        <div class="overlay-actions" id="overlay-actions">
+          <button id="rewatch-btn" class="overlay-btn">Get a 2-hour rewatch</button>
+          <button id="close-overlay" class="overlay-btn secondary">Close</button>
+        </div>
       </div>
     </div>
   </section>
@@ -188,16 +201,30 @@
 
   <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
+  // ===== Config =====
   const TWO_DAYS_MS = 2 * 24 * 60 * 60 * 1000;
+  const TWO_HOURS_MS = 2 * 60 * 60 * 1000;
   const STORAGE_PREFIX = 'gmiy_firstSeen_ip_';
+  const REWATCH_PREFIX = 'gmiy_rewatch_until_ip_';
+  const REWATCH_USED_PREFIX = 'gmiy_rewatch_used_ip_';
+
+  // ===== Elements =====
   const $count = document.getElementById('countdown');
   const $overlay = document.getElementById('expired-overlay');
+  const $overlayTitle = document.getElementById('overlay-title');
+  const $overlayText = document.getElementById('overlay-text');
+  const $overlayActions = document.getElementById('overlay-actions');
+  const $rewatchBtn = document.getElementById('rewatch-btn');
+  const $closeOverlay = document.getElementById('close-overlay');
+
   const $iframe = document.getElementById('vimeo-iframe');
   const $offersWrapper = document.getElementById('offers-wrapper');
   const $revealBtn = document.getElementById('reveal-btn');
+
   let player;
   try { player = new Vimeo.Player($iframe); } catch(e){}
 
+  // ===== Helpers =====
   function pad(n){ return String(n).padStart(2,'0'); }
   function formatRemaining(ms){
     if(ms <= 0) return '00:00:00';
@@ -209,60 +236,17 @@
     return (d>0? d + 'd ' : '') + pad(h)+':'+pad(m)+':'+pad(sec);
   }
 
-  async function getFirstSeenMs(){
+  async function getIp(){
     try{
-      const ipRes = await fetch('https://api.ipify.org?format=json');
-      const ipJson = await ipRes.json();
-      const ip = ipJson.ip || 'unknown-ip';
-      const key = STORAGE_PREFIX + ip;
-      let firstSeen = localStorage.getItem(key);
-      if(!firstSeen){
-        const nowIso = new Date().toISOString();
-        localStorage.setItem(key, nowIso);
-        return new Date(nowIso).getTime();
-      }
-      return new Date(firstSeen).getTime();
-    }catch(err){
-      const key = 'gmiy_firstSeen_local';
-      let firstSeen = localStorage.getItem(key);
-      if(!firstSeen){
-        const nowIso = new Date().toISOString();
-        localStorage.setItem(key, nowIso);
-        return new Date(nowIso).getTime();
-      }
-      return new Date(firstSeen).getTime();
+      const r = await fetch('https://api.ipify.org?format=json');
+      const j = await r.json();
+      return j.ip || 'unknown-ip';
+    }catch(e){
+      return 'local-fallback';
     }
   }
 
+  // ===== State =====
   let expiryTs = null;
-  async function initPersonalTimer(){
-    const firstSeenMs = await getFirstSeenMs();
-    expiryTs = firstSeenMs + TWO_DAYS_MS;
-    tick();
-    setInterval(tick, 1000);
-  }
-
-  function tick(){
-    if(!expiryTs) return;
-    const remaining = expiryTs - Date.now();
-    const expired = remaining <= 0;
-    if(expired){
-      $count.textContent = 'Expired';
-      $overlay.style.display = 'flex';
-      $offersWrapper.style.display = 'none';
-      if(player){ player.pause().catch(()=>{}).finally(()=>{ if(player.unload) player.unload(); }); }
-    } else {
-      $count.textContent = formatRemaining(remaining);
-    }
-  }
-
-  $revealBtn.addEventListener('click', () => {
-    if(expiryTs && Date.now() > expiryTs) return;
-    $offersWrapper.style.display = 'block';
-    window.scrollTo({ top: $offersWrapper.offsetTop - 16, behavior: 'smooth' });
-  });
-
-  initPersonalTimer();
-  </script>
-</body>
-</html>
+  let rewatchUntilTs = null;
+  let ipKey
