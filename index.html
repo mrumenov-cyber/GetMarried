@@ -23,72 +23,203 @@
       --box:#f8f8fc;
       --edge:#e5e6ee;
     }
-    *{box-sizing:border-box}
+
+    *{ box-sizing:border-box; }
+
     body{
-      margin:0;background:var(--bg);color:var(--ink);
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-      display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:100vh
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      min-height:100vh;
     }
-    header{text-align:center;padding:28px 20px 14px;max-width:1000px;width:100%}
+
+    header{
+      text-align:center;
+      padding:28px 20px 14px;
+      max-width:1000px;
+      width:100%;
+    }
+
     .hero-title{
-      margin:6px 0 10px;font-size:34px;line-height:1.15;font-weight:800;letter-spacing:.2px
+      margin:6px 0 10px;
+      font-size:34px;
+      line-height:1.15;
+      font-weight:800;
+      letter-spacing:.2px;
     }
-    .hero-sub{margin:6px 0 8px;color:var(--muted);font-size:16px;max-width:740px;margin-left:auto;margin-right:auto}
+
+    .hero-sub{
+      margin:6px 0 8px;
+      color:var(--muted);
+      font-size:16px;
+      max-width:740px;
+      margin-left:auto;
+      margin-right:auto;
+    }
 
     /* Video */
     .video-wrapper{
-      width:100%;max-width:1000px;position:relative;border-radius:16px;overflow:hidden;
-      margin:18px 0 18px;border:1px solid var(--edge);box-shadow:0 6px 22px rgba(0,0,0,.06)
+      width:100%;
+      max-width:1000px;
+      position:relative;
+      border-radius:16px;
+      overflow:hidden;
+      margin:18px 0 18px;
+      border:1px solid var(--edge);
+      box-shadow:0 6px 22px rgba(0,0,0,.06);
     }
-    .video-wrapper::before{content:"";display:block;padding-top:65.81%;}
-    .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+    .video-wrapper::before{
+      content:"";
+      display:block;
+      padding-top:65.81%;
+    }
+    .video-wrapper iframe{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
 
     /* Reveal section */
     .reveal-wrap{
-      max-width:1000px;width:100%;text-align:center;margin-bottom:20px;
+      max-width:1000px;
+      width:100%;
+      text-align:center;
+      margin-bottom:20px;
     }
     .reveal-btn{
-      background:var(--purple);color:#fff;border:none;padding:14px 28px;border-radius:999px;
-      font-size:16px;font-weight:700;cursor:pointer;
+      background:var(--purple);
+      color:#fff;
+      border:none;
+      padding:14px 28px;
+      border-radius:999px;
+      font-size:16px;
+      font-weight:700;
+      cursor:pointer;
       box-shadow:0 6px 16px rgba(124,92,255,.25);
       transition:transform .1s, background .2s;
     }
-    .reveal-btn:hover{background:var(--purple-dark)}
-    .reveal-btn:active{transform:translateY(1px)}
+    .reveal-btn:hover{ background:var(--purple-dark); }
+    .reveal-btn:active{ transform:translateY(1px); }
 
     /* offers */
-    .hidden-offers{display:none;}
+    .hidden-offers{
+      display:none;
+    }
 
     .tiers{
-      width:100%;max-width:1000px;margin:0 0 30px;
-      display:grid;gap:22px;grid-template-columns:1fr;align-items:stretch;
+      width:100%;
+      max-width:1000px;
+      margin:0 0 30px;
+      display:grid;
+      gap:22px;
+      grid-template-columns:1fr;
+      align-items:stretch;
+      padding:0 20px 0;
     }
+
     .card{
-      border-radius:16px;padding:24px 24px 22px;border:1px solid var(--edge);background:var(--box);
-      display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 24px rgba(0,0,0,.05);height:100%;
+      border-radius:16px;
+      padding:24px 24px 22px;
+      border:1px solid var(--edge);
+      background:var(--box);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      box-shadow:0 8px 24px rgba(0,0,0,.05);
+      height:100%;
     }
-    .card h2{margin:0;font-size:22px;display:flex;align-items:center;gap:10px;line-height:1.2}
+
+    .card h2{
+      margin:0;
+      font-size:22px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      line-height:1.2;
+    }
+
     .badge{
-      font-size:12px;font-weight:800;letter-spacing:.4px;border-radius:999px;
-      padding:6px 10px;line-height:1;display:inline-block;white-space:nowrap
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.4px;
+      border-radius:999px;
+      padding:6px 10px;
+      line-height:1;
+      display:inline-block;
+      white-space:nowrap;
     }
-    .badge.gold{background:var(--gold-soft);color:#5a4700;border:1px solid var(--gold-edge)}
-    .subtitle{color:var(--muted);margin:-2px 0 2px}
-    .features{margin:4px 0 0;color:var(--ink);line-height:1.55;flex:1 1 auto}
-    .features ul{margin:8px 0 0 18px;padding:0}
-    .features li{margin:7px 0}
-    .bottom-cta{margin-top:auto}
-    .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+
+    .badge.gold{
+      background:var(--gold-soft);
+      color:#5a4700;
+      border:1px solid var(--gold-edge);
+    }
+
+    .subtitle{
+      color:var(--muted);
+      margin:-2px 0 2px;
+    }
+
+    .features{
+      margin:4px 0 0;
+      color:var(--ink);
+      line-height:1.55;
+      flex:1 1 auto;
+    }
+
+    .features ul{
+      margin:8px 0 0 18px;
+      padding:0;
+    }
+
+    .features li{
+      margin:7px 0;
+    }
+
+    .bottom-cta{
+      margin-top:auto;
+    }
+
+    .cta-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:6px;
+    }
+
     .btn{
-      align-self:flex-start;background:var(--purple);color:#fff;padding:12px 18px;border-radius:10px;
-      text-decoration:none;font-weight:700;transition:transform .1s, background .2s
+      align-self:flex-start;
+      background:var(--purple);
+      color:#fff;
+      padding:12px 18px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:700;
+      transition:transform .1s, background .2s;
     }
-    .btn:hover{background:var(--purple-dark)}
-    .btn:active{transform:translateY(1px)}
-    .btn.gold{background:var(--gold);color:#111;font-weight:800}
-    .btn.gold:hover{background:var(--gold-deep)}
-    .btn.purple{background:var(--purple);color:#fff;font-weight:700}
-    .btn.purple:hover{background:var(--purple-dark)}
+    .btn:hover{ background:var(--purple-dark); }
+    .btn:active{ transform:translateY(1px); }
+
+    .btn.gold{
+      background:var(--gold);
+      color:#111;
+      font-weight:800;
+    }
+    .btn.gold:hover{ background:var(--gold-deep); }
+    .btn.purple{
+      background:var(--purple);
+      color:#fff;
+      font-weight:700;
+    }
+    .btn.purple:hover{ background:var(--purple-dark); }
 
     .card.gold{
       background:linear-gradient(180deg,#fffaf0 0%, #fff5da 100%);
@@ -96,33 +227,130 @@
       position:relative;
       box-shadow:0 14px 30px rgba(201,162,39,.18), 0 6px 14px rgba(0,0,0,.06);
     }
-    .card.gold .title-wrap{
-      display:flex;align-items:center;gap:10px;justify-content:space-between
-    }
-    .card.gold .crown{
-      width:28px;height:28px;border-radius:6px;border:1px solid #ddd;
-      background:radial-gradient(circle at 30% 30%, #fff 0%, #ffeaa5 40%, #ffd86b 100%);
-      border-color:#f3d37d;box-shadow:inset 0 0 8px rgba(255,215,100,.6);
-    }
-    .why-box{
-      background:#fff;border:1px dashed #d0d7db;border-radius:12px;padding:12px 14px;line-height:1.5
-    }
-    .gold-why{border-color:#f1d88a;}
 
-    footer{text-align:center;padding:20px;color:#777;font-size:14px}
+    .card.gold .title-wrap{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      justify-content:space-between;
+    }
+
+    .card.gold .crown{
+      width:28px;
+      height:28px;
+      border-radius:6px;
+      border:1px solid #ddd;
+      background:radial-gradient(circle at 30% 30%, #fff 0%, #ffeaa5 40%, #ffd86b 100%);
+      border-color:#f3d37d;
+      box-shadow:inset 0 0 8px rgba(255,215,100,.6);
+    }
+
+    .why-box{
+      background:#fff;
+      border:1px dashed #d0d7db;
+      border-radius:12px;
+      padding:12px 14px;
+      line-height:1.5;
+    }
+
+    .gold-why{
+      border-color:#f1d88a;
+    }
+
+    /* Testimonials section */
+    .testimonials{
+      width:100%;
+      max-width:1000px;
+      padding:0 20px 40px;
+    }
+
+    .t-wrap{
+      background:#fff;
+      border-radius:16px;
+      border:1px solid var(--edge);
+      box-shadow:0 8px 24px rgba(0,0,0,.05);
+      padding:22px 20px 20px;
+    }
+
+    .t-head{
+      text-align:left;
+      margin-bottom:10px;
+    }
+
+    .t-head h2{
+      margin:0 0 4px;
+      font-size:22px;
+    }
+
+    .t-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .t-cta{
+      margin:10px 0;
+      text-align:right;
+    }
+
+    .t-cta a{
+      font-size:14px;
+      text-decoration:none;
+      color:var(--purple-dark);
+      font-weight:600;
+    }
+
+    .t-frame{
+      margin-top:10px;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid var(--edge);
+      height:420px;
+    }
+
+    .t-frame iframe{
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    footer{
+      text-align:center;
+      padding:20px;
+      color:#777;
+      font-size:14px;
+    }
+
+    @media (max-width:600px){
+      .hero-title{
+        font-size:26px;
+      }
+      .card{
+        padding:18px 16px 18px;
+      }
+      .t-frame{
+        height:360px;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <h1 class="hero-title">How to Get Married in 1 Year or less in 2026?</h1>
-    <p class="hero-sub">Even if you have been unlucky in love, even if you never dated, even if you think you are too old, even if you just broke up..</p>
+    <p class="hero-sub">
+      Even if you have been unlucky in love, even if you never dated, even if you think you are too old, even if you just broke up..
+    </p>
   </header>
 
   <!-- Video -->
   <section class="video-wrapper">
-    <iframe id="vimeo-iframe" src="https://player.vimeo.com/video/1132171278?h=dfb7bc5b68&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-      frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-      referrerpolicy="strict-origin-when-cross-origin" title="Get Married in 1 Year">
+    <iframe
+      id="vimeo-iframe"
+      src="https://player.vimeo.com/video/1132171278?h=dfb7bc5b68&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      title="Get Married in 1 Year">
     </iframe>
   </section>
 
@@ -140,7 +368,9 @@
           <div class="crown" aria-hidden="true"></div>
         </div>
 
-        <div class="subtitle">Premium access, high-touch mentoring, and powerful momentum — for women ready to be fully supported, guided, and accelerated into their dream marriage.</div>
+        <div class="subtitle">
+          Premium access, high-touch mentoring, and powerful momentum — for women ready to be fully supported, guided, and accelerated into their dream marriage.
+        </div>
 
         <div class="features">
           <div class="why-box gold-why">
@@ -165,10 +395,18 @@
         <div class="bottom-cta">
           <h3 style="margin-top:10px;font-size:18px;font-weight:800">Choose your plan:</h3>
           <div class="cta-row">
-            <a class="btn gold" href="https://stan.store/feminine_dating/p/your-path-to-your-divine-masculine-provider" target="_blank" rel="noopener">
+            <a
+              class="btn gold"
+              href="https://stan.store/feminine_dating/p/your-path-to-your-divine-masculine-provider"
+              target="_blank"
+              rel="noopener">
               €2,222 Pay in Full →
             </a>
-            <a class="btn purple" href="https://stan.store/feminine_dating/p/get-married-in-1-year-in-4-monthly-instalments" target="_blank" rel="noopener">
+            <a
+              class="btn purple"
+              href="https://stan.store/feminine_dating/p/get-married-in-1-year-in-4-monthly-instalments"
+              target="_blank"
+              rel="noopener">
               4 × €644 →
             </a>
           </div>
@@ -176,7 +414,7 @@
       </div>
     </section>
 
-     <!-- TESTIMONIALS -->
+    <!-- TESTIMONIALS -->
     <section id="testimonials" class="testimonials" aria-labelledby="t-title">
       <div class="t-wrap">
         <div class="t-head">
@@ -185,7 +423,9 @@
         </div>
 
         <div class="t-cta">
-          <a href="https://feminine-dating-results.start.page/" target="_blank" rel="noopener">Open Full Stories in New Tab →</a>
+          <a href="https://feminine-dating-results.start.page/" target="_blank" rel="noopener">
+            Open Full Stories in New Tab →
+          </a>
         </div>
 
         <div class="t-frame">
@@ -199,7 +439,9 @@
         </div>
 
         <div class="t-cta" style="margin-top:14px">
-          <a href="https://feminine-dating-results.start.page/" target="_blank" rel="noopener">View All Success Stories →</a>
+          <a href="https://feminine-dating-results.start.page/" target="_blank" rel="noopener">
+            View All Success Stories →
+          </a>
         </div>
       </div>
     </section>
@@ -210,11 +452,19 @@
   </footer>
 
   <script>
-    const revealBtn = document.getElementById('reveal-btn');
-    const offersWrapper = document.getElementById('offers-wrapper');
-    revealBtn.addEventListener('click', () => {
-      offersWrapper.style.display = 'block';
-      window.scrollTo({ top: offersWrapper.offsetTop - 16, behavior: 'smooth' });
+    document.addEventListener('DOMContentLoaded', function () {
+      const revealBtn = document.getElementById('reveal-btn');
+      const offersWrapper = document.getElementById('offers-wrapper');
+
+      if (revealBtn && offersWrapper) {
+        revealBtn.addEventListener('click', () => {
+          offersWrapper.style.display = 'block';
+          window.scrollTo({
+            top: offersWrapper.offsetTop - 16,
+            behavior: 'smooth'
+          });
+        });
+      }
     });
   </script>
 </body>
